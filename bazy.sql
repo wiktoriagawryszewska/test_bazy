@@ -39,3 +39,23 @@ update statek set max_ladownosc=max_ladownosc * 0.7 where...;
 #lab4, zadanie3c
 alter table postac add check(wiek <= 1000);
 show create table postac;
+#lab4, zadanie4a
+#modyfikacja kolumny rodzaj w tabeli postac(dodanie w wartosci waz)
+#dodanie weza loko 
+alter table postac modify rodzaj enum('ptak','wiking','kobieta','syreny','waz');
+select * from postac;
+insert into postac values('34567895432','9','Loko','waz','1987-12-09','40', null,null);
+#b
+#uzycie create z like
+create table marynarz like postac;
+create table marynarz select * from postac where nazwa_statku != null;
+drop table marynarz;
+#lub
+#uzycie create table... select...
+# create table marynarz select * from postac;
+#c 
+#dodac ewentualnie brakujace klucze glowne i obce
+alter table marynarz add foreign key(postac); 
+
+#lab4,zadanie5a
+#dokonczyc
