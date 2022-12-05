@@ -1,6 +1,11 @@
 # lab5, zadanie 1
 ```sql
--
+CREATE TABLE kreatura AS SELECT * FROM wikingowie.kreatura;
+
+CREATE TABLE zasob AS SELECT * FROM wikingowie.zasob;
+ 
+CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
+
 ```
 
 # lab5, zadanie 2
