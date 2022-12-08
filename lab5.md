@@ -32,7 +32,10 @@ WHERE MONTH(dataUr) IN(7,8);
 
 SELECT typ FROM zasob where rodzaj IS NULL;
 
---SELECT * FROM zasob ORDER BY  waga ASC, 
+SELECT *
+FROM zasob
+WHERE rodzaj IS NOT NULL
+ORDER BY waga; 
 
 SELECT * FROM kreatura 
 ORDER BY dataUr
@@ -45,7 +48,9 @@ DESC LIMIT 5;
 SELECT DISTINCT rodzaj FROM zasob
 WHERE rodzaj IS NOT NULL;
 
---SELECT concat("Nazywam się", nazwa, " ", udzwig) FROM kreatura;
+SELECT CONCAT(nazwa,'-',rodzaj)
+FROM kreatura
+WHERE rodzaj LIKE 'wi%';
 
 SELECT nazwa, ilosc*waga FROM zasob
 WHERE dataPozyskania BETWEEN 2000 AND 2007;
