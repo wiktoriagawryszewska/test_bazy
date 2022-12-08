@@ -8,8 +8,8 @@ WHERE rodzaj = 'wiking';
  FROM kreatura
  GROUP BY rodzaj;
  
- SELECT AVG(YEAR(CURDATE())-YEAR(dataUr) ,rodzaj 
-AS 'sredni wiek' 
+SELECT rodzaj,AVG(YEAR(CURDATE())-YEAR(dataUr)) 
+AS sredni_wiek 
 FROM kreatura 
 GROUP BY rodzaj;
  
