@@ -62,8 +62,10 @@ HAVING MIN(ilosc) > 1;
   WHERE idKreatury IS NOT NULL );
   
   #4
-  SELECT * FROM postac;
-  SELECT nazwa 
-  FROM postac 
-  WHERE rodzaj = 'wiking' 
-  AND YEAR(data_ur) BETWEEN 1671  and 1679;
+ SELECT * FROM kreatura;
+  SELECT k.nazwa, z.nazwa 
+  FROM kreatura k
+  join ekwipunek e on k.idKreatury=e.idKreatury
+  join zasob z on z.idZasobu=e.idZasobu
+  WHERE k.rodzaj = 'wiking' 
+  AND YEAR(k.dataUr) BETWEEN 1670  and 1679;
