@@ -33,3 +33,37 @@ HAVING MIN(ilosc) > 1;
 
 
 ```
+# lab6, zadanie 3 
+# 3 zlaczanie tabel
+  #zlaczanie wewnetrzne czesc wspolna
+  SELECT* FROM kreatura AS k, ekwipunek e
+  WHERE k.idKreatury = e.idKreatury;
+  # teraz inner join
+  
+  SELECT * FROM kreatura k 
+  INNER JOIN ekwipunek e
+  ON k.idKreatury = e.idKreatury
+  INNER JOIN zasob z ON e.idZasobu = z.idZasobu;
+  
+  #b
+  SELECT * FROM kreatura;
+  SELECT * FROM kreatura k
+  INNER JOIN nazwa n 
+  ON n.idKreatury = k.idKreatur;
+  
+  #c
+  SELECT * FROM kreatura k
+  LEFT JOIN ekwipunek e 
+  ON k.idKreatury=e.idKreatury
+  WHERE e.idKreatury IS NOT NULL;
+  
+  SELECT * FROM kreatura WHERE idKreatury NOT IN
+  (SELECT DISTINCT idKreatury FROM ekwipunek 
+  WHERE idKreatury IS NOT NULL );
+  
+  #4
+  SELECT * FROM postac;
+  SELECT nazwa 
+  FROM postac 
+  WHERE rodzaj = 'wiking' 
+  AND YEAR(data_ur) BETWEEN 1671  and 1679;
