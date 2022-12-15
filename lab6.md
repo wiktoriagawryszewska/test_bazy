@@ -34,34 +34,28 @@ HAVING MIN(ilosc) > 1;
 
 ```
 # lab6, zadanie 3 
-# 3 zlaczanie tabel
-  #zlaczanie wewnetrzne czesc wspolna
-  SELECT* FROM kreatura AS k, ekwipunek e
-  WHERE k.idKreatury = e.idKreatury;
-  # teraz inner join
-  
-  SELECT * FROM kreatura k 
-  INNER JOIN ekwipunek e
-  ON k.idKreatury = e.idKreatury
-  INNER JOIN zasob z ON e.idZasobu = z.idZasobu;
-  
-  #b
-  SELECT * FROM kreatura;
-  SELECT * FROM kreatura k
-  INNER JOIN nazwa n 
-  ON n.idKreatury = k.idKreatur;
-  
-  #c
-  SELECT * FROM kreatura k
-  LEFT JOIN ekwipunek e 
-  ON k.idKreatury=e.idKreatury
-  WHERE e.idKreatury IS NOT NULL;
-  
-  SELECT * FROM kreatura WHERE idKreatury NOT IN
-  (SELECT DISTINCT idKreatury FROM ekwipunek 
-  WHERE idKreatury IS NOT NULL );
-  
-  #4
+```sql
+select k.idKreatury, k.nazwa, SUM(e.ilosc)
+from kreatura k 
+left join ekwipunek e 
+on k.idKreatury = e.idKreatury
+group by k.idKreatury;
+
+SELECT k.idKreatury, k.nazwa, z.nazwa
+from kreatura k 
+left join ekwipunek e
+on e.idKreatury = k.idKreatury
+left join zasob z
+on z.idZasobu = e.idZasobu;
+
+select k.idKreatury, k.nazwa
+from kreatura k
+left join ekwipunek e
+on e.idKreatury = k.idKreatury
+where e.idKreatury is null;
+  ```
+  # lab6,zadanie4
+  ```sql
  SELECT * FROM kreatura;
   SELECT k.nazwa, z.nazwa 
   FROM kreatura k
@@ -69,3 +63,40 @@ HAVING MIN(ilosc) > 1;
   join zasob z on z.idZasobu=e.idZasobu
   WHERE k.rodzaj = 'wiking' 
   AND YEAR(k.dataUr) BETWEEN 1670  and 1679;
+  
+  select k.idKreatury, k.nazwa, k.dataUr
+from kreatura k
+left join ekwipunek e
+on k.idKreatury = e.idKreatury
+left join zasob z
+on e.idZasobu = z.idZasobu
+where z.rodzaj = 'jedzenie'
+order by k.dataUr DESC limit 5;
+```
+# lab6, zadanie 5
+```sql
+select k.rodzaj, avg(z.waga)
+from kreatura k
+left join ekwipunek e 
+on k.idKreatury = e.idKreatury
+left join zasob z
+on z.idZasobu = e.idZasobu
+where k.rodzaj not in ('malpa' , 'waz')
+and e.ilosc < 30
+group by k.rodzaj;
+
+SELECT rodzaj,'Najstarszy' AS wiek , nazwa, dataUr
+FROM kreatura
+WHERE dataUR in
+(SELECT min(dataUr) AS dataUr
+FROM kreatura
+GROUP BY rodzaj)
+UNION ALL
+SELECT rodzaj,'Najmlodszy' AS wiek ,nazwa, dataUr
+FROM kreatura
+WHERE dataUR in
+(SELECT max(dataUr) AS dataUr
+FROM kreatura
+GROUP BY rodzaj)
+ORDER BY rodzaj;
+```
