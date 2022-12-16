@@ -75,15 +75,15 @@ order by k.dataUr DESC limit 5;
 ```
 # lab6, zadanie 5
 ```sql
-select k.rodzaj, avg(z.waga)
+select k.rodzaj, avg(z.waga * e.ilosc)
 from kreatura k
 left join ekwipunek e 
 on k.idKreatury = e.idKreatury
 left join zasob z
 on z.idZasobu = e.idZasobu
 where k.rodzaj not in ('malpa' , 'waz')
-and e.ilosc < 30
-group by k.rodzaj;
+group by k.rodzaj
+having sum(e.ilosc) < 30;
 
 SELECT rodzaj,'Najstarszy' AS wiek , nazwa, dataUr
 FROM kreatura
