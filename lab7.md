@@ -1,4 +1,4 @@
-#lab7,zadanie1
+# lab7,zadanie1
 ```sql
 DELETE FROM kreatura;
 
@@ -29,7 +29,7 @@ INNER JOIN ekwipunek ON ekwipunek.idKreatury = uczestnicy.id_uczestnika
 GROUP BY wyprawa.nazwa;
 ```
 
-#lab7,zadanie2
+# lab7,zadanie2
 ```sql
 SELECT wyprawa.nazwa, COUNT(*), GROUP_CONCAT(kreatura.nazwa)
 FROM wyprawa
@@ -46,7 +46,7 @@ INNER JOIN sektor ON sektor.id_sektora = etap.sektor
 INNER JOIN kreatura ON wyprawa.kierownik = kreatura.idKreatury
 ORDER BY wyprawa.data_rozpoczecia,wyprawa.id_wyprawy,etap.kolejnosc;
 ```
-#lab7,zadanie3
+# lab7,zadanie3
 ```sql
 
 SELECT sektor.nazwa,ifnull(count(etapy_wyprawy.sektor),0) AS ilosc_odwiedzin 
@@ -62,7 +62,7 @@ LEFT JOIN uczestnicy
 ON kreatura.idKreatury = uczestnicy.id_uczestnika
 GROUP BY kreatura.nazwa;
 ```
-#lab7,zadanie4
+# lab7,zadanie4
 ```sql
 SELECT wyprawa.nazwa, SUM(length(dziennik)) FROM wyprawa
 JOIN etapy_wyprawy ON wyprawa.id_wyprawy = etapy_wyprawy.idWyprawy
@@ -79,7 +79,7 @@ GROUP BY uczestnicy.id_wyprawy
 ORDER BY wyprawa.id_wyprawy;
 
 ```
-#lab7,zadanie5
+# lab7,zadanie5
 ```sql
 SELECT wyprawa.nazwa,kreatura.nazwa,datediff(data_rozpoczecia,dataUr)
 FROM kreatura
