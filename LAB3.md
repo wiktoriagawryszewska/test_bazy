@@ -37,6 +37,17 @@ SELECT * FROM pracownik
 ORDER BY pensja DESC
 LIMIT 5;
 
+9
+SELECT* FROM towar
+WHERE nazwa_towaru NOT LIKE '%a%'
+ORDER BY cena_zakupu DESC
+LIMIT 10;
+
+10
+
+11
+CREATE TABLE towary_powyzej_100 AS
+SELECT * FROM towar WHERE cena >= 100;
 
 
 ```
