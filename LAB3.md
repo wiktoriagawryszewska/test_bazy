@@ -51,3 +51,76 @@ SELECT * FROM towar WHERE cena >= 100;
 
 
 ```
+# lab3,zadanie część 2
+1
+  SELECT p.imie, p.nazwisko, d.nazwa
+ FROM pracownik AS p
+ JOIN dzial AS d
+ ON p.id_pracownika = d.id_pracownika;?
+ 
+ 2
+ SELECT t.nazwa_towaru, k.nazwa_kategori, s.ilosc
+ FROM towar AS t
+ JOIN kategoria AS k
+ ON t.id_towaru=k.id_towaru
+ JOIN stan_magazynowy AS s
+ ON k.id_kategori = s.id_kategori; ?
+ 
+ 3
+ SELECT dzial.nazwa, COUNT(pracownik.id_pracownika) 
+ FROM dzial 
+ INNER JOIN pracownik 
+ ON dzial.id_dzialu=pracownik.dzial 
+ GROUP BY dzial.nazwa;
+ 
+ 4
+ SELECT nazwa_kategori, COUNT(towar.id_towaru) 
+ FROM kategoria
+ INNER JOIN towar 
+ ON kategoria.id_kategori=towar.kategoria 
+ GROUP BY id_kategori;
+ 
+ 5
+ 
+select nazwa_kategori ,group_concat(nazwa_towaru) 
+from kategoria k 
+inner join towar t 
+on k.id_kategori=t.kategoria 
+group by kategoria;
+
+6
+select Round(AVG(pensja),'2') 
+from pracownik;
+
+7
+select AVG(pensja) 
+from pracownik 
+where YEAR(CURDATE())-YEAR(data_zatrudnienia)>=5;
+
+8
+select nazwa_towaru,SUM(ilosc) 
+from towar t 
+inner join  pozycja_zamowienia p 
+on t.id_towaru=p.towar 
+group by id_towaru 
+order by SUM(ilosc) DESC LIMIT 10;
+
+9
+select numer_zamowienia,SUM(ilosc*cena) 
+from zamowienie z 
+inner join pozycja_zamowienia p 
+on z.id_zamowienia=p.zamowienie 
+where YEAR(data_zamowienia)=2017 
+and Month(data_zamowienia) Between 1 and 3 
+group by id_zamowienia;
+
+10
+select imie ,nazwisko ,Sum(ilosc*cena) 
+from pracownik p 
+inner join zamowienie z  
+on p.id_pracownika=z.pracownik_id_pracownika 
+inner join pozycja_zamowienia pz 
+on z.id_zamowienia=pz.zamowienie 
+group by id_pracownika  
+order by Sum(ilosc*cena); 
+ 
