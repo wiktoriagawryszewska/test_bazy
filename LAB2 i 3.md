@@ -1,4 +1,4 @@
-# lab3,zadanie część 1
+# lab2,zadanie część 1
 ```sql
 1
 SELECT nazwisko FROM pracownik ORDER BY nazwisko ASC;
@@ -51,7 +51,7 @@ SELECT * FROM towar WHERE cena >= 100;
 
 
 ```
-# lab3,zadanie część 2
+# lab3,zadanie część 1
 1
   SELECT p.imie, p.nazwisko, d.nazwa
  FROM pracownik AS p
