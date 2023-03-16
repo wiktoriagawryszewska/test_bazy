@@ -1,0 +1,33 @@
+#include<stdio.h>
+//wzglednie pierwsze suma liczb
+
+unsigned int NWD(unsigned int a, unsigned int b)
+{
+    while(a != b)
+        if(a > b)
+            a = a-b;
+        else
+            b = b-a;
+    return a;
+}
+unsigned int suma(unsigned int n)
+{
+    int i, suma = 0;
+    for(i = 2; i<n; i++)
+    {
+        if(NWD(i,n) == 1)
+            suma +=i;
+    }
+    return suma;
+}
+
+
+int main()
+{
+    int n;
+    printf("Podaj liczbe calkowita n: ");
+    scanf("%d", &n);
+    printf("wynik obliczen to: %d\n", suma(n));
+    return 0;
+
+}
