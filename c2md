@@ -72,3 +72,24 @@ int main()
     zlicz();
         return 0;
 }
+
+#include<stdio.h>
+
+int wyraz(int n)
+{
+    if(n==0)
+        return 1;
+    return 2*wyraz(n-1) +5;
+
+}
+
+
+int main()
+{
+    int x;
+    scanf("%d", &x);
+    printf("a %d = %d", x, wyraz(x));
+    return 0;
+
+}
+
