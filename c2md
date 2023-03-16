@@ -34,6 +34,21 @@ int main()
 
 #include<stdio.h>
 #include<math.h>
+int wyraz(int n, int m)
+{
+    if(m==0)
+        return n;
+    if(n==0)
+            return m;
+    return wyraz(n-1,m) + wyraz(n,m-1) + wyraz(n-1,m-1);
+}
+int main()
+{
+   printf("%d", wyraz(5,7));
+   return 0;
+}
+
+#include<math.h>
 int wyraz(int n)
 {
     if(n<2)
