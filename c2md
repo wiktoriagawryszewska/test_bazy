@@ -31,3 +31,44 @@ int main()
     return 0;
 
 }
+
+
+#include<stdio.h>
+
+void zlicz(int x)
+{
+    static int ile=0;
+    ile= ile + x;
+    printf("f zostalla wywolana %d razy\n ", ile);
+}
+
+int main()
+{
+    zlicz(5);
+    zlicz(7);
+    zlicz(8);
+    zlicz(4);
+    zlicz(9);
+    zlicz(2);
+        return 0;
+}
+
+#include<stdio.h>
+
+void zlicz(int x)
+{
+    static int ile=0;
+    ile++;
+    printf("f zostalla wywolana %d razy\n ", ile);
+}
+
+int main()
+{
+    zlicz();
+    zlicz();
+    zlicz();
+    zlicz();
+    zlicz();
+    zlicz();
+        return 0;
+}
