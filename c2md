@@ -32,7 +32,24 @@ int main()
 
 }
 
+#include<stdio.h>
+#include<math.h>
+int wyraz(int n)
+{
+    if(n<2)
+        return 1;
+    if(n%2==0)
+            return wyraz(n-1)+n;
+    return wyraz(n-1)*n;
+}
 
+int main()
+{
+   int k;
+   for(k=0; k< 10; k++)
+    printf("%d\n", wyraz(k));
+   return 0;
+}
 #include<stdio.h>
 
 void zlicz(int x)
