@@ -62,12 +62,12 @@ int main(){
 #include<math.h>
 int* rezerwuj( ){
 
-return malloc(sizeof(int))
+return malloc(sizeof(int));
 }
 
 int main(){
-   int* wsk = rezerwuj();
-   printf("%p", wsk)
-   printf("%d", *wsk)
+   int* wsk = rezerwuj(10);
+   printf("%p\n", wsk);
+   printf("%d", *wsk);
     return 0;
 }
