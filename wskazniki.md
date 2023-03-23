@@ -58,3 +58,16 @@ int main(){
     return 0;
 }
 
+#include<stdio.h>
+#include<math.h>
+int* rezerwuj( ){
+
+return malloc(sizeof(int))
+}
+
+int main(){
+   int* wsk = rezerwuj();
+   printf("%p", wsk)
+   printf("%d", *wsk)
+    return 0;
+}
