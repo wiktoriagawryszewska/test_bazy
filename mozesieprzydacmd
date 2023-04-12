@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void pokerowelove(int a, int b, int c, int d)
+{
+    int count[10]={0};
+    count[a]++;
+    count[b]++;
+    count[c]++;
+    count[d]++;
+
+    int para=0;
+    int trojka=0;
+    int czworka=0;
+
+    for(int i=1; i<=9;i++)
+    {
+        if(count[i]==2)
+        {
+            para++;
+        } else if (count[i]==3)
+        {
+            trojka++;
+        } else if (count[i]==4)
+        {
+            czworka++;
+        }
+    }
+    if(czworka==1)
+    {
+        printf("Kareta\n");
+    } else if(trojka==1)
+    {
+        printf("trojka\n");
+    } else if(para==1)
+    {
+        printf("para\n");
+    } else if(para==2)
+    {
+        printf("dwie pary\n");
+    }
+}
+
+int main()
+{
+    int a=3, b=3, c=3, d=3;
+    pokerowelove(a, b, c, d);
+}
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int tabela[] = {3, 5, 4, 6, 5, 3, 5, 8, 5, 5, 9, 6}; 
+    int rozmiar = sizeof(tabela) / sizeof(tabela[0]);
+    int unikalne[rozmiar]; 
+    int liczbaUnikalnych = 0; 
+
+    
+    for (int i = 0; i < rozmiar; i++) {
+        int unikalna = 1; 
+
+        
+        for (int j = 0; j < liczbaUnikalnych; j++) {
+            if (tabela[i] == unikalne[j]) {
+                unikalna = 0;
+                break;
+            }
+        }
+
+       
+        if (unikalna) {
+            unikalne[liczbaUnikalnych++] = tabela[i];
+        }
+    }
+
+    
+    printf("Unikalne wartosci w tabeli to: ");
+    for (int i = 0; i < liczbaUnikalnych; i++) {
+        printf("%d ", unikalne[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+void tylkoTeKtoreNieMajaPotworzen(int n, int tab[])
+{
+    for (int i = 0; i < n; i++)
+    {
+        int x = tab[i];
+        int ile = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                continue;
+            }
+            if (tab[j] == x)
+            {
+                ile++;
+                break;
+            }
+        }
+        if (ile == 0)
+        {
+            printf("%d ", x);
+        }
+    }
+    printf("\n");
+}
