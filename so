@@ -1,0 +1,28 @@
+mkdir st_2024
+cd st_2024
+mkdir Dane
+mkdir Programy
+mkdir Teksty
+cd Programy
+mkdir C
+mkdir Shell
+cd Shell
+mkdir Skrypty
+
+zadanie2
+
+touch Zestawienie.txt
+nano Zestawienie.txt
+(napis Wiktoria)
+
+a) cp Zestawienie.txt~/st_2024/Programy/Shell/Skrypty/spis24.txt
+b) less spis24.txt
+
+zadanie3
+rm -rf Programy
+
+zadanie4
+pwd
+
+zadanie5
+In -s ~/st_2024/DaneOdsylacz_Dane
