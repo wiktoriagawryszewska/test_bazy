@@ -1,0 +1,78 @@
+%komentarz
+/*
+kom
+*/
+% na(X,Y) spelnione gdy klocek X lezy na Y
+
+na(c,a).
+na(c,b).
+na(d,c).
+
+/*
+program sklada sie z 3 klauzur ktore sa faktami
+*/
+pod(Y,X):-na(X,Y).
+miedzy(X,Y,Z):-na(Y,X),na(X,Z).
+miedzy(X,Y,Z):-na(Z,X),na(X,Y).
+jarosz(ola).
+jarosz(ewa).
+jarosz(jan).
+jarosz(paweł).
+
+niepalący(ola).
+niepalący(iza).
+niepalący(piotr).
+
+czyta(ola).
+czyta(iza).
+czyta(piotr).
+
+sport(ola).
+sport(jan).
+sport(piotr).
+sport(paweł).
+
+lubi(ola,X):-jarosz(X).
+lubi(ewa,X):- jarosz(X), niepalący(X).
+lubi(iza,X):- czyta(X).
+lubi(iza,X):- sport(X), niepalący(X).
+lubi(jan,X):- sport(X).
+lubi(piotr,X):- sport(X), jarosz(X).
+lubi(piotr,X):- czyta(X).
+lubi(paweł,X):- jarosz(X), sport(X), czyta(X).
+
+
+lubi(jan,tatry).
+lubi(jan,beskidy).
+lubi(jerzy, beskidy).
+lubi(jerzy, bieszczady).
+lubi(adam,sudety).
+lubi(justyna, bieszczady).
+bratniadusza(X,Y):-lubi(X,G),lubi(Y,G),X\==Y.
+
+
+06.03.2024
+mieszka(iza,dworcowa).
+mieszka(piotr,dworcowa).
+mieszka(pawel,dworcowa).
+
+mieszka(ania,poziomkowa).
+mieszka(kasia,poziomkowa).
+mieszka(ola,poziomkowa).
+
+mieszka(mariusz,mieszka(paweł,X)).
+
+sasiad(X,Y):-mieszka(X,U),mieszka(Y,U).
+/*
+
+1.true.
+
+2.X = ania ;
+X = kasia ;
+X = ola.
+
+3.X = iza ;
+X = piotr ;
+X = pawel.
+
+4.false.
