@@ -1,0 +1,49 @@
+cd- wyjscie
+pwd- gdzie jestes
+tree- drzewo katalogu
+ls -l zawartosc katalogu w dlugiej formie
+~ - dom
+mkdir folder 
+mkdir -m fol1
+nano p1
+less- otworz plik
+man rm
+rm -v pl- usuwanie
+rmdir- usuwanie folderu
+cat a1 >> a2 - doklejanie a1 do a2
+mv a2 log - zmiana nazwy
+
+
+
+
+
+1.
+if[$a -gt $b]
+then echo "a jest wieksze od b"
+else echo "b jest wieksze od a"
+fi
+
+2
+cd ~
+if[-f dane.txt]
+then eho "istnieje"
+else echo "nie istnieje"
+fi
+
+
+
+3
+if[-n $a]
+then echo "niezerowy"
+else echo "zerowy"
+fi
+
+
+
+
+4
+if["$PWD = $HOME]
+then echo "katalog domowy"
+else echo "inny katalog"
+fi
+
