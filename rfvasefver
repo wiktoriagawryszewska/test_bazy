@@ -1,0 +1,90 @@
+Do pliku Zawartośč txt w katalogu War 2 zapisz informacje o zawartości katalogu domowego, 
+skopiuj go pod nową nazwa Kopia1244 do katalogu Zestaw2, oraz bez zmiany nazwy do katalogu domowego.
+
+# Przejdź do katalogu domowego
+cd ~
+ ls -l > ~/K2/daneS/war2/zawartosc.txt
+cp ~/K2/daneS/war2/zawartosc.txt ~/K2/projekt2/zestaw2/kopia1244
+
+cp- co kopujemy cala sciezka i gdzie kopiujemy.
+ls -l -informacje o zawartosci katalogu
+
+3
+Zmien katalog bieżacy na Dane"S-nr indeksu" utwórz w nim plik Podsumowanie-do
+pliku wpisz informację o zawartości katalogu KOLO 1-strukturę jego drzewa,
+dopisz do tego pliku informacje o ilości plików zawartych w katalogu domowym.
+
+tree ~/K2 > podsumowanie
+ls -l ~/K2 | wc -l >> podsumowanie
+
+wc-liczy
+tylko wiersze: wc –l,
+tylko wyrazy: wc –w,
+tylko znaki: wc –c.
+
+4
+Do pliku Dostep w katalogu Zestaw zapisz informację o prawach dostępu do katalogu Projekt1.
+Do pliku Dostęp nadaj prawa dostępu: pełne dla właściciela, zapis, uruchomienie dla grupy, odczyt dla reszty.
+prawa
+
+ls -l ~/K2 > wPracy.txt
+chmod 734 wPracy.txt
+echo "$HOME" >> wPracy.txt
+
+wlasciciel grupa reszta
+r- read - Otwarcie i odczyt pliku
+● w- write -zapisu pliku, czyli modyfikowanie jego zawartości
+● x- execute - Uruchomienia pliku
+rwx
+421
+
+5
+Napisz polecenie, które w katalogu Zestaw2 tworzy dowiązanie symboliczne o nazwie doKopii do pliku 
+Kopia 1244 z katalogu War. 2. Pokaż jak można je wykorzystać przy przeglądaniu zawartości pliku Kopia1244. 
+Usuń katalog Dane Test.
+
+ln -s ~/K2/projekt2/zestaw2/kopia1244 ~/K2/daneS/war2/doKopii
+cat  ~/K2/daneS/war2/doKopii
+(pokazuje zawartosc pliku ktora zostala dowiazana)
+ rm -r danetest
+
+rm -r usuwa rekurencyjnie katalog i zawartosc
+ln -s -dowiazanie symboliczne, najpierw jedna sciezka potem druga
+
+6
+Policz, ile jest plików zwykłych w katalogu domowym i w podkatalogach do poziomu 3, 
+których zawartość była zmieniana w ciaqu ostatnich 5 dni.
+
+ find ~ -maxdepth 3 -type f -mtime -5 | wc -l
+
+-maxdeph 3 - glebokosc 3, zawsze po find przed type
+
+typy: f -zwykły, d-katalog, 
+l- dowiązanie symboliczne, b - urz. blokowe, 
+c- urz. znakowe, s - socket
+(gniazdo), p - pipe
+
+-mtime - dni
+-mmin - minuty
+
+
+7.
+Przeszukaj pliki tekstowe w katalogu domowym i jego podkatalogach, znajdź wiersze
+kończace się cyfra, wyświetl wiersze i nazwy tych plików, oraz policz, ile tych
+wierszy jest oraz ile razem znaków one zawieraja
+
+grep -r '[0-9]$' ~ | wc -l -c
+
+grep - szuka
+
+
+
+
+
+
+
+
+
+
+
+
