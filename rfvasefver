@@ -107,6 +107,23 @@ jest litera o, e lub m -wyświetl te wiersze i policzyć ile wyrazów łacznie o
 grep -r '^..[oem]' ~/ 
 grep -r '^..[oem]' ~/ | wc -w
 
+8. Policz, ile jest plików zwykłych, a ile katalogów w katalogu dev wyniki zapisz do zmiennych. 
+Korzystając z konstrukcji, strukturalnych sprawdź, których jest więcej. Wyświetl stosowny komunikat.
 
+ zwykle=$(find /dev -type f | wc -l)
+ katalogi=$(find /dev -type d | wc -l)
 
+if($zwykle -gt $katalogi); then
+echo "zwykle wieksze niz katalogi"; 
+else echo "katalogi wieksze niz zwykle";
+fi
+
+porownywanie:
+ala = ala
+2 -eq 2 =
+2 -le 2 <=
+2 -lt 2 <
+2 -ne 2 !=
+2 -gt 2 >
+2 -ge 2 >=
 
