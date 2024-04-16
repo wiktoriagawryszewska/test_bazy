@@ -80,10 +80,32 @@ grep - szuka
 
 
 
+2 Do pliku Info w katalogu Zestaw2 zapisz informację o zawartości katalogu domowego, następnie plik ten skopiuj ze z
+mianą nazwy na Kopia1045 do katalogu Socjalne, oraz bez zmiany nazwy do katalogu Projekt1.
+ls -l ~ > info
+ cp ~/PRACA/daneS/zestaw2/info ~/PRACA/daneS/podania/socjalne/Kopia1045
+ cp ~/PRACA/daneS/zestaw2/info ~/PRACA/projekt1
+
+3 Zmień katalog bieżący na Dane"S-nr indeksu", w nim utwórz plik Zestawienie-do pliku wpisz informację o zawartości katalogu PRACA -
+strukturę jego drzewa oraz dopisz do tego pliku informację o ilości plików zawartych w katalogu domowym.
+
+tree ~/PRACA > zestawienie
+ls -l ~ | wc -l >> zestawienie
+
+4 Napisz z błędem polecenie shella i komunikat o błędzie zapisz do pliku Wynik22 w
+katalogu War.2. Dla pliku Wynik22 nadaj prawa dostępu: odczyt/zapis dla właściciela, odczyt dla grupy, wykonanie dla reszty
 
 
+6 Wyszukaj wszystkie pliki „zwykłe" w katalogu domowym, przeszukując podkatalogi do poziomu 3, do
+których był dostęp w ciągu ostatnich 15 dni -wyświetl ich nazwy oraz zawartość.
 
+find -maxdepth 3 -type f -atime -15
 
+7. Przeszukaj pliki w katalogu domowym -które z nich zawierają wiersze-gdzie na trzeciej pozycji (od początku)
+jest litera o, e lub m -wyświetl te wiersze i policzyć ile wyrazów łacznie one zawierają.
+
+grep -r '^..[oem]' ~/ 
+grep -r '^..[oem]' ~/ | wc -w
 
 
 
