@@ -127,3 +127,11 @@ ala = ala
 2 -gt 2 >
 2 -ge 2 >=
 
+
+10. W katalogu Projekt1 utwórz plik Znakowe, który będzie zawierał nazwy wszystkich
+plików obsługujących urządzenia znakowe z katalogu /dev, policz ile wierszy
+zawiera ten plik-wynik dopisz do pliku.
+find /dev -type c > znakowe
+find /dev -type c | wc -l >> znakowe
+
+
