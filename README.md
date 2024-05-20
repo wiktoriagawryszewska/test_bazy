@@ -22,6 +22,7 @@ echo "liczba plikow w katalogu domowym: $iloscplikow"
 fi
 
 
+
 chmod 755 costam
 ./costam
 
@@ -174,6 +175,16 @@ echo "$x" | wc -l
 chmod 755 konstrukcje2
 ./konstrukcje2
 
+nano konstrukcje32
 
+#!/bin/bash
+
+count=$(find . -type f -name '^a' | wc -l)
+echo "$count"
+count2=$(find . -type f -name '..a...' | wc -l)
+echo "$count2"
+
+chmod 775 konstrukcje32
+./konstrukcje32
 
 
