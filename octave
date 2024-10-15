@@ -1,0 +1,186 @@
+1.Stwórz wektor o wartościach 1, 0.9, 0.8 … -0.9
+v = 1:-0.1:-0.9;
+
+2.
+
+3.W poniższej macierzy pomnóż wiersze kolejno przez 1, 100, 10
+za pomocą jednego polecenia.
+Macierz wejściowa:
+1 2 3
+4 5 6
+7 8 9
+Wynik:
+1 2 3
+400 500 600
+70 80 90
+
+A = [1 2 3; 4 5 6; 7 8 9];
+B = A .* [1; 100; 10];
+
+4.W poniższej macierzy pomnóż kolumny kolejno przez 1, 0.1, 10
+za pomocą jednego polecenia.
+Macierz wejściowa: 
+1 2 3
+4 5 6
+7 8 9
+Wynik:
+1 0.2 30
+4 0.5 60
+7 0.8 90
+
+A = [1 2 3; 4 5 6; 7 8 9];
+C = A .* [1 0.1 10];
+
+5.Stwórz wektor o wartościach 11, 12 .. 20 i wskaż czy kolejne
+elementy w tym wektorze są jednocześnie większe niż 15 i mniejsze lub
+równe 18. Wynik powinien wynosić 0, 0, 0, 0, 0, 1, 1, 1, 0, 0.
+v1 = 11:1:20;
+v1 > 15 & v1 <= 18;
+
+6.Odwracanie macierzy
+[1 2;3 4]^-1
+Zadanie. Za pomocą odwracania macierzy wylicz wartość układu równań
+3⋅x1+1⋅x2=31;−x1+x2=−9 , czyli [x1
+x2]=[ 3 1
+−1 1]−1
+∗[31
+−9] , powinno wyjść
+x1=10 ; x2=1 .
+
+A = [3 1; -1 1];
+b = [31; -9];
+x = A^-1 * b;
+x1 = x(1);
+x2 = x(2);
+
+7.W poniższej macierzy powiększ wartości pomiędzy 2 i 5 o 10 z
+pomocą jednej linii kodu.
+Macierz wejściowa: 
+1 2 3 
+4 5 6
+7 8 9
+
+A = [1 2 3; 4 5 6; 7 8 9];
+ A(A > 2 & A < 5) += 10
+
+8.roszę stworzyć macierz widoczną poniżej, następnie w każdej
+kolumnie osobno pomniejszyć wartości o średnią wartość w tej kolumnie.
+Macierz wejściowa:
+1 2 3
+4 5 4
+7 8 5
+ A = [1 2 3; 4 5 4; 7 8 5];
+A = A - mean(A)
+
+9.Stwórz ręcznie macierz widoczną poniżej, następnie pobierz
+wielkość macierzy poniżej, później stwórz macierz o tej samej wartości
+wypełnioną wartościami losowymi z przedziału [-1;+1].
+Macierz wejściowa: 
+1 2 3
+4 5 4
+
+A = [1 2 3; 4 5 4];
+[rows, cols] = size(A);
+B = -1 + 2 * rand(rows, cols);
+
+10.
+Proszę stworzyć macierz o rozmiarze 3x4 wypełnioną losowymi
+wartościami całkowitymi z przedziału [0; 5], a następnie proszę za pomocą
+podwójnej pętli i polecenia if wyzerować wartości większe niż 3.
+
+ A = floor(rand(3, 4) * 6);
+>> for i=1:size(A,1)
+for j=1:size(A,2)
+if A(i,j) >3
+A(i,j) = 0
+end
+end
+end
+
+% Definiowanie przedziału x
+x = linspace(-pi, pi, 100); % 100 punktów w przedziale (-pi, pi)
+
+% Obliczanie wartości funkcji
+y1 = abs(sin(x));  % abs(sin(x))
+y2 = atan(x);      % atan(x)
+
+% Tworzenie wykresu
+figure; % Tworzy nową figurę
+
+% Rysowanie pierwszej funkcji
+h1 = plot(x, y1, 'b-', 'LineWidth', 2); % Wykres abs(sin(x))
+
+% Umożliwienie nakładania wykresów
+hold on; 
+
+% Rysowanie drugiej funkcji
+h2 = plot(x, y2, 'r-', 'LineWidth', 2);  % Wykres atan(x)
+
+% Opis osi
+xlabel('x');            % Oś X
+ylabel('y');            % Oś Y
+
+% Dodanie legendy
+legend([h1, h2], {'abs(sin(x))', 'atan(x)'}, 'Location', 'Best');
+
+% Dodanie tytułu
+title('Wykres funkcji abs(sin(x)) i atan(x)');
+
+% Umożliwienie wyświetlenia wykresu
+hold off; % Kończy nakładanie wykresów
+grid on;  % Dodaje siatkę do wykresu
+
+
+Proszę stworzyć macierz zawierającą obrazek „rzeczka.jpg”, następnie
+zmienić kolor kolumn pikseli od 10 do 50 na żółte, później wyświetlić tak
+powstały obrazek.
+
+% Wczytaj obrazek
+img = imread('rzeczka.jpg'); % Wczytanie obrazka do macierzy
+
+% Wyświetlenie oryginalnego obrazka
+figure;
+imshow(img);
+title('Oryginalny obrazek');
+
+% Zmiana koloru kolumn pikseli od 10 do 50 na żółty
+% Żółty to kombinacja czerwonego i zielonego
+% w systemie RGB jest to [255, 255, 0]
+img(:, 10:50, 1) = 255; % Ustawienie czerwonego na 255
+img(:, 10:50, 2) = 255; % Ustawienie zielonego na 255
+img(:, 10:50, 3) = 0;   % Ustawienie niebieskiego na 0
+
+% Wyświetlenie zmodyfikowanego obrazka
+figure;
+imshow(img);
+title('Zmodyfikowany obrazek z żółtymi kolumnami');
+
+
+
+Proszę stworzyć macierz zawierającą po lewej stronie obrazek
+„rzeczka.jpg”, a po prawej jego lustrzane odbicie. Proszę nie używać
+subplot i flip.
+
+% Wczytaj obrazek
+img = imread('rzeczka.jpg'); % Wczytanie obrazka do macierzy
+
+% Tworzenie lustrzanego odbicia obrazka ręcznie
+[m, n, p] = size(img);      % Pobieranie rozmiarów obrazka
+mirror_img = zeros(m, n, p, 'uint8'); % Inicjalizacja macierzy na lustrzane odbicie
+
+% Ręczne odwracanie obrazka
+for i = 1:m
+    for j = 1:n
+        mirror_img(i, j, :) = img(i, n - j + 1, :); % Ustawienie lustrzanego odbicia
+    end
+end
+
+% Łączenie obrazków (oryginalnego i lustrzanego)
+combined_img = [img, mirror_img]; % Łączenie oryginalnego i lustrzanego odbicia
+
+% Wyświetlenie połączonego obrazka
+figure;
+imshow(combined_img);
+title('Oryginalny i lustrzane odbicie obrazka');
+
+
