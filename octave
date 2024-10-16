@@ -194,3 +194,24 @@ result = A(2:-1:1, :);
 
 % Wyświetlenie wyniku
 disp(result);
+% Wczytaj obrazek
+img = imread('rzeczka.jpg'); % Wczytanie obrazka do macierzy
+
+% Sprawdzenie, czy obraz jest w trybie kolorowym (RGB)
+if size(img, 3) == 3
+    % Jeśli obrazek jest w formacie RGB
+    negative_img = 255 - img; % Tworzenie negatywu
+else
+    % Jeśli obrazek jest w formacie grayscale
+    negative_img = 255 - img; % Tworzenie negatywu
+end
+
+% Wyświetlenie oryginalnego i negatywnego obrazka
+figure;
+subplot(1, 2, 1); % Oryginalny obrazek
+imshow(img);
+title('Oryginalny obrazek');
+
+subplot(1, 2, 2); % Negatyw obrazka
+imshow(negative_img);
+title('Negatyw obrazka');
