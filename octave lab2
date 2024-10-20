@@ -1,0 +1,12 @@
+1,Proszę zamienić kolor czerwony z niebieskim i wyświetlić obrazek.
+ img = imread('C:\Users\Wiktoria\Downloads\plaza1.png');
+>> img_modified = img;
+>> img_modified(:,:,1) = img(:,:,3);
+>> img_modified(:,:,3) = img(:,:,1);
+>> figure;
+>> subplot(1,2,1);
+>> imshow(img);
+>> subplot(1,2,2);
+>> imshow(img_modified);
+
+2,
