@@ -1,0 +1,52 @@
+Proszę wykonać oddzielnie podane niżej zadania dla obrazka
+„plaza1.png”. Nie należy korzystać z gotowych funkcji dokonujących
+obróbki obrazka.
+1. Proszę zamienić kolor czerwony z niebieskim i wyświetlić obrazek.
+img = imread('plaza1.png');
+R = img(:, :, 1); 
+ G = img(:, :, 2);
+ B = img(:, :, 3);
+ img(:,:,1) = B;
+img(:,:,3) = R;
+imshow(img);
+
+2. Proszę zrobić w jednym oknie histogram wszystkich wartości razem,
+obok histogramy dla osobnych kolorów (razem 4 histogramy). Może być
+konieczne tymczasowe spłaszczenie macierzy do postaci wektora za
+pomocą polecenia reshape, lub vec, gdyż stosując polecenie hist
+powinno się podawać wektor a nie macierz 2 lub 3 wymiarową. W
+podanych niżej przykładach użyto hist(…, 100).
+
+img = imread('plaza1.png');
+
+% Rozdzielenie kanałów R, G, B
+R = img(:, :, 1);
+G = img(:, :, 2);
+B = img(:, :, 3);
+
+% Spłaszczenie macierzy do wektorów
+R_flat = vec(R);
+G_flat = vec(G);
+B_flat = vec(B);
+all_flat = vec(img); % Spłaszczenie wszystkich wartości pikseli
+
+figure;
+
+% Histogram wszystkich wartości
+subplot(2, 2, 1);
+hist(all_flat, 100);
+title('Histogram wszystkich wartości');
+
+subplot(2, 2, 2);
+hist(R_flat, 100);
+title('Histogram kanału czerwonego');
+
+subplot(2, 2, 3);
+hist(G_flat, 100);
+title('Histogram kanału zielonego');
+
+subplot(2, 2, 4);
+hist(B_flat, 100);
+title('Histogram kanału niebieskiego');
+
+
