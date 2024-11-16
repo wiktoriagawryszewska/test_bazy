@@ -50,3 +50,147 @@ hist(B_flat, 100);
 title('Histogram kanału niebieskiego');
 
 
+
+
+4. Proszę „rozciągnąć histogram osobno dla każdego koloru”, tak, aby
+przeskalować wszystkie wartości osobno (osobno dla koloru czerwonego,
+zielonego, niebieskiego) tak, aby rzeczywiście zawierały się one w
+przedziale [0; 255]. Następnie proszę pokazać obrazek i histogramy.
+img = imread('plaza1.png');
+img = double(img);
+
+R = img(:, :, 1);
+G = img(:, :, 2);
+B = img(:, :, 3);
+
+we_min_R = min(R(:));
+we_max_R = max(R(:));
+R_scaled = (R - we_min_R) / (we_max_R - we_min_R) * 255;
+
+we_min_G = min(G(:));
+we_max_G = max(G(:));
+G_scaled = (G - we_min_G) / (we_max_G - we_min_G) * 255;
+
+we_min_B = min(B(:));
+we_max_B = max(B(:));
+B_scaled = (B - we_min_B) / (we_max_B - we_min_B) * 255;
+
+img_scaled = cat(3, R_scaled, G_scaled, B_scaled);
+img_scaled = uint8(img_scaled);
+
+figure;
+subplot(2, 2, 1);
+imshow(img_scaled); % Zmieniony obraz
+title('all');
+
+subplot(2, 2, 2);
+hist(vec(R_scaled), 100);
+title('red');
+
+subplot(2, 2, 3);
+hist(vec(G_scaled), 100);
+title('green');
+
+subplot(2, 2, 4);
+hist(vec(B_scaled), 100);
+title('blue)');
+
+
+
+5. Proszę „rozciągnąć histogram globalnie z usuwaniem ogona”, proszę
+przeskalować wszystkie wartości razem w dość osobliwy sposób.
+Najpierw należy znaleźć taką wartości we_min’, że (mniej więcej) 10%
+wartości wejściowych (przed obróbką) będzie mniejsza. Natomiast
+we_max’ będzie wynosiło tyle, aby (mniej więcej) 10% wartości
+wejściowych (przed obróbką) była większa. Wartości we_min’ i we_max’
+to więc odpowiednio 1. i 9. decyl. Następnie należy przeskalować wartości
+obrazka tak, aby wartości wejściowe z przedziału [we_min’, we_max’]
+zamienić na [0; 255], a wartości mniejsze niż 0 i większe niż 255
+odpowiednio zmniejszyć albo zwiększyć.
+
+img = imread('plaza1.png');
+img = double(img); 
+img_flat = img(:);
+img_sorted = sort(img_flat); 
+
+n_pixels = length(img_sorted);
+we_min = img_sorted(round(0.10 * n_pixels)); % 10. percentyl
+we_max = img_sorted(round(0.90 * n_pixels)); % 90. percentyl
+
+img_scaled = (img - we_min) / (we_max - we_min) * 255;
+
+img_scaled(img_scaled < 0) = 0;
+img_scaled(img_scaled > 255) = 255;
+img_scaled = uint8(img_scaled);
+
+figure;
+subplot(1, 2, 1);
+imshow(uint8(img));
+title('og');
+
+subplot(1, 2, 2);
+imshow(img_scaled); 
+title('po');
+
+figure;
+subplot(2, 1, 1);
+hist(img_flat, 100);
+title('Hist og');
+
+subplot(2, 1, 2);
+hist(img_scaled(:), 100);
+title('Hist po');
+
+
+
+Proszę wykonać oddzielnie podane niżej zadania dla obrazka
+„rzeczka2.png”.Nie należy korzystać z gotowych funkcji dokonujących
+obróbki obrazka.
+1. Proszę dokonać korekcji gamma 0,7, a następnie pokazać porównanie
+obrazka przed i po wprowadzeniu zmian. Wzór na korekcję gamma to:
+wyjscie=wejscie(1/ gamma) ,
+gdzie wejscie to wartość wejściowa z przedziału [0; 1] (a nie [0; 255] – prawdopodobnie należy przeskalować do [0;1]), gamma to podany
+parametr (gamma > 0).
+
+
+img = imread('rzeczka2.png');
+img = double(img) / 255; 
+
+gamma = 0.7;
+img_gamma_corrected = img .^ (1 / gamma);
+img_gamma_corrected = uint8(img_gamma_corrected * 255);
+
+
+figure;
+subplot(1, 2, 1);
+imshow(uint8(img * 255)); 
+title('og');
+
+subplot(1, 2, 2);
+imshow(img_gamma_corrected);
+title('(0,7)');
+
+
+
+2. Proszę zrobić to samo, co przy poprzednim obrazku, ale dla
+gamma=1.5.
+
+img = imread('rzeczka2.png');
+img = double(img) / 255; 
+
+gamma =1.5;
+img_gamma_corrected = img .^ (1 / gamma);
+img_gamma_corrected = uint8(img_gamma_corrected * 255);
+
+figure;
+subplot(1, 2, 1);
+imshow(uint8(img * 255)); 
+title('og');
+
+subplot(1, 2, 2);
+imshow(img_gamma_corrected);
+title('po 1,5');
+
+
+
+
