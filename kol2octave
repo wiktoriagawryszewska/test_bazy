@@ -192,6 +192,33 @@ imshow(img_gamma_corrected);
 title('po 1,5');
 
 
+3. Proszę dokonać korekcji jasności i porównać obrazek przed i po
+zmianie.
+img = imread('rzeczka2.png');
+img = double(img);
+wspJasnosciplus = 50;
+wspJasnosciminus = -50;
+img_brightness_adjustedplus = img + wspJasnosciplus;
+img_brightness_adjustedminus = img + wspJasnosciminus;
+
+img_brightness_adjustedplus(img_brightness_adjustedplus < 0) = 0; 
+img_brightness_adjustedplus(img_brightness_adjustedplus > 255) = 255;
+img_brightness_adjustedplus = uint8(img_brightness_adjustedplus);
+
+img_brightness_adjustedminus(img_brightness_adjustedminus < 0) = 0; 
+img_brightness_adjustedminus(img_brightness_adjustedminus > 255) = 255;
+img_brightness_adjustedminus = uint8(img_brightness_adjustedminus);
+
+figure;
+subplot(2, 2, 1);
+imshow(uint8(img)); 
+title('Oryginalny obraz');
+subplot(2, 2, 2);
+imshow(img_brightness_adjustedplus);
+subplot(2, 2, 3);
+imshow(img_brightness_adjustedminus);
+
+
 
 
 
